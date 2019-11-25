@@ -1,5 +1,6 @@
 <?php
-$db = mysqli_connect("127.0.0.1", "alejandro", "root", "clima");
+$db = mysqli_connect('localhost', 'root') or 
+die ('Unable to connect. Check your connection parameters.');
 mysqli_select_db($db, 'clima') or die(mysqli_error($db));
 
 $colorcillo= $_GET['color'];
