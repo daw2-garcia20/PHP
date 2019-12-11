@@ -36,6 +36,7 @@ $tabla.=<<<TABLE
                  <th>Codigo</th>
                  <th><a href=adminp2.php?orden=nom&ascdesc=$ordenar>Nombre</a></th>
                  <th>Poblacion</th>
+                 <th>Eliminar</th>
              </tr>
 TABLE;
 
@@ -45,6 +46,11 @@ $tabla.=<<<TABLE
     <td>$codi</td>
     <td>$nom</td>
     <td>$poblacio</td>
+TABLE;
+
+  $tabla.=  '<td><a href="delete2.php?type=ciutat&id=' . $row['idCiutat'] . '"> [DELETE]</a></td>';
+
+$tabla.=<<<TABLE
 </tr>
 TABLE;
 echo '<a href="add2.php?action=add"> [ADD]</a>';
@@ -91,22 +97,29 @@ $table.=<<<TABLE
                  <th>Temperatura Baixa</th>
                  <th>Precipitacio</th>
                  <th>Color</th>
+                 <th>Editar</th>
+                 <th>Eliminar</th>
               
              </tr>
 TABLE;
 
 
 $table.=<<<TABLE
-	<tr>
-		<td>$idTemps</td>
-	    <td>$nom</td>
-	    <td>$tempAlta</td>
-	    <td>$tempBaixa</td>
-	    <td>$precipitacio</td>
-	    <td>$color</td>
-	</tr>
-TABLE;
 
+    	 <tr>
+    	   	<td>$idTemps</td>
+    	    <td>$nom</td>
+    	    <td>$tempAlta</td>
+    	    <td>$tempBaixa</td>
+    	    <td>$precipitacio</td>
+    	    <td>$color</td>
+TABLE;
+      $table.='<td><a href="edit2.php?action=edit&id=' . $row['idTemps'] . '"> [EDIT]</a></td>';
+        $table.= '<td><a href="delete2.php?type=temps&id=' . $row['idTemps'] . '&color='.$row['color'].'"> [DELETE]</a></td>';
+      $table.= <<<TABLE
+
+	     </tr>
+TABLE;
 
 while ($row = mysqli_fetch_assoc($result)) {
     extract($row);
@@ -133,12 +146,17 @@ while ($row = mysqli_fetch_assoc($result)) {
     <td>$tempBaixa</td>
     <td>$precipitacio</td>
     <td>$color</td>
-    
+TABLE;
+      $table.='<td><a href="edit2.php?action=edit&id=' . $row['idTemps'] . '"> [EDIT]</a></td>';
+      $table.= '<td><a href="delete2.php?type=temps&id=' . $row['idTemps'] . '&color='.$row['color'].'"> [DELETE]</a></td>';
+      $table.= <<<TABLE
+
+       </tr>
+
 </tr>
 TABLE;
 
-echo '<a href="edit2.php?action=edit&id=' . $row['idTemps'] . '"> [EDIT]</a>';
-echo ' <a href="delete2.php?type=temps&id=' . $row['idTemps'] . '&color='.$row['color'].'"> [DELETE]</a>';
+
 
 }
 
