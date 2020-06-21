@@ -39,9 +39,9 @@ class Dog {
 function timeToEat() {
 	if(time() < strtotime("today 3:00pm")||
 		time() > strtotime("today 9:00pm")) {
-		return true;
-	} else {
 		return false;
+	} else {
+		return true;
 	}
 }
 $widget = new WidgetMenu();
@@ -52,7 +52,7 @@ $data->addRecord("Colacao", "200 mg", "500 Kcl");
 $data->addRecord("Mayonesa", "500 g", "330 Kcl");
 $data->addRecord("Aceite", "100 mg", "1000 Kcl");
 
-
+//$widget->draw();
 
 $objDog = new Dog('Puchy');
 $objDog->onspeak('timeToEat');
